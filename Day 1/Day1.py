@@ -50,13 +50,12 @@ for i in calories:
     if i == "":    
         if count > mostCalories:
                     mostCalories = count
-                    print(mostCalories)
         count = 0
     else: 
         i = int(i)
         count = count + i
     
-
+print(f"The most Calories being carried by a single elf is {mostCalories}")
 """
 --- Part Two ---
 
@@ -69,3 +68,18 @@ In the example above, the top three Elves are the fourth Elf (with 24000 Calorie
 Find the top three Elves carrying the most Calories. How many Calories are those Elves carrying in total?
 
 """
+with open(r'Day 1\puzzleInput.txt') as f:
+    data = f.read()
+calories = [c for c in data.split("\n")]
+elfCaloriesTotalList = []
+count = 0
+for i in calories:
+    if i =="":
+        elfCaloriesTotalList.append(count)
+        count = 0
+    else:
+        count = count + int(i)
+
+sortedList = sorted(elfCaloriesTotalList, reverse=True)
+total = sortedList[0] + sortedList[1] + sortedList[2]
+print(total)
