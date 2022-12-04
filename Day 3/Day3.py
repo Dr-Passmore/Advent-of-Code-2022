@@ -79,3 +79,27 @@ Priorities for these items must still be found to organize the sticker attachmen
 
 Find the item type that corresponds to the badges of each three-Elf group. What is the sum of the priorities of those item types?
 '''
+
+with open(r'Day 3\puzzleInput.txt') as f:
+    data = f.read()
+backpack = [m for m in data.split("\n")]
+
+values = {'a': 1, 'b': 2, 'c': 3, 'd': 4, 'e': 5, 'f': 6, 'g': 7, 'h': 8, 'i': 9, 'j': 10, 'k': 11, 'l': 12, 'm': 13, 'n': 14, 'o': 15, 'p': 16, 'q': 17, 'r': 18, 's': 19, 't': 20, 'u': 21, 'v': 
+22, 'w': 23, 'x': 24, 'y': 25, 'z': 26, 'A': 27, 'B': 28, 'C': 29, 'D': 30, 'E': 31, 'F': 32, 'G': 33, 'H': 34, 'I': 35, 'J': 36, 'K': 37, 'L': 38, 'M': 39, 'N': 40, 'O': 41, 'P': 42, 'Q': 43, 'R': 44, 'S': 45, 'T': 46, 'U': 47, 'V': 
+48, 'W': 49, 'X': 50, 'Y': 51, 'Z': 52}
+totalSum = 0
+rucksackGroup = []
+for i in backpack:
+    if len(rucksackGroup) < 3:
+        rucksackGroup.append(i)
+        if len(rucksackGroup) == 3:
+            rucksack1 = list(rucksackGroup[0])
+            rucksack2 = list(rucksackGroup[1])
+            rucksack3 = list(rucksackGroup[2])
+            result = set(rucksack1).intersection(rucksack2, rucksack3)
+            result = "".join(result)
+            totalSum += values[result]
+            rucksackGroup = []
+
+print(totalSum)
+    
