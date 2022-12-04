@@ -67,5 +67,41 @@ for c in cleanupAreas:
 
 print(totalOverlap)
         
-        
-        
+'''--- Part Two ---
+
+It seems like there is still quite a bit of duplicate work planned. Instead, the Elves would like to know the number of pairs that overlap at all.
+
+In the above example, the first two pairs (2-4,6-8 and 2-3,4-5) don't overlap, while the remaining four pairs (5-7,7-9, 2-8,3-7, 6-6,4-6, and 2-6,4-8) do overlap:
+
+    5-7,7-9 overlaps in a single section, 7.
+    2-8,3-7 overlaps all of the sections 3 through 7.
+    6-6,4-6 overlaps in a single section, 6.
+    2-6,4-8 overlaps in sections 4, 5, and 6.
+
+So, in this example, the number of overlapping assignment pairs is 4.
+
+In how many assignment pairs do the ranges overlap?
+'''
+
+with open(r'Day 4\puzzleInput.txt') as f:
+    data = f.read()
+cleanupAreas = [m for m in data.split("\n")]
+section1 = ""
+section2 = ""
+totalOverlap = 0
+
+for c in cleanupAreas:
+    cleaningSections = [s for s in c.split(",")]
+    for i in cleaningSections:
+        rangeArea = [r for r in i.split("-")]
+        if section1 == "":
+            section1 = range(int(rangeArea[0]),int(rangeArea[1])+1)
+        else:
+            section2 = range(int(rangeArea[0]),int(rangeArea[1])+1) 
+            check = [i for i in section1 if i in section2]
+            if check != []:
+                totalOverlap += 1
+            section1 = ""
+            section2 = ""
+            
+print(totalOverlap)
