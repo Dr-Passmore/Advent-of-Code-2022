@@ -66,7 +66,7 @@ After the rearrangement procedure completes, what crate ends up on top of each s
 
 stacks = [["Z", "N"], ["M", "C", "D"], ["P"]]
 
-'''stacks = [["L", "N", "W", "T", "D"], 
+stacks = [["L", "N", "W", "T", "D"], 
           ["C", "P", "H"], 
           ["W", "P", "H", "N", "D", "G", "M", "J"],
           ["C", "W", "S", "N", "T", "Q", "L"],
@@ -76,7 +76,7 @@ stacks = [["Z", "N"], ["M", "C", "D"], ["P"]]
           ["Z", "N", "W", "G", "V", "B", "R", "T"],
           ["W", "G", "D", "N", "P", "L"]
           ]
-'''
+
 print(stacks)
 output= ""
 
@@ -103,7 +103,7 @@ def crateMove (numberofCrates, currentStack, newstack):
         print(f"The new Value {newValue} has moved from stack {currentStack} to {newstack}")
         print(stacks)
 
-with open(r'Day 5\testInput.txt') as f:
+with open(r'Day 5\puzzleInput.txt') as f:
     data = f.read()
 moves = [m for m in data.split("\n")]
 
@@ -117,6 +117,6 @@ for i in moves:
     
 for i in stacks:
     print(i)
-    output = output + str(i[0])
+    output = output + str(i[-1])
 
 print(output)
